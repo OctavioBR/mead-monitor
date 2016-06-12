@@ -8,15 +8,16 @@ else:
 
 print("Starting serial readings from " + port)
 
-fp = "data.txt"
+fp = "data.csv"
 f = open(fp, "w")
 serialFromArduino = serial.Serial(port, 9600)
 serialFromArduino.flushInput()
+f.write("date,time,temp,clicks\n");
 
 try:
 	while True:
 		input = serialFromArduino.readline()
-		input = "[{0} - {1}] {2}".format(\
+		input = "{0},{1},{2}".format(\
 			time.strftime("%x"), time.strftime("%H:%M:%S"), input)
 		print(input, end="")
 		f.write(input)

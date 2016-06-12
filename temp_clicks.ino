@@ -20,10 +20,8 @@ void setup() {
 
 void loop() {
   sensors.requestTemperatures(); // Send the command to get temperatures
-  Serial.print("Temp: ");
   Serial.print(sensors.getTempCByIndex(0));
-
-  Serial.print(" | Clicks: ");
+  Serial.print(",");
   Serial.println(count);
 
   count = 0;
